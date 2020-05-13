@@ -1,2 +1,6 @@
-# Lab5
-Code and report from Lab5
+# Laboratorium nr 4
+### - Całkowanie numeryczne równań różniczkowych zwyczajnych
+**Zawartość:**
+- Kod 
+- Raport
+
