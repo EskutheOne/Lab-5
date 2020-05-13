@@ -10,17 +10,17 @@ void rhs_fun(double t, double* X, double* F);
 void veuler(double t, double* X, double h, int n, void (*fun)(double, double*, double*), double* X1);
 double energia(double w, double a);
 
-double l = 1;
-double g = 9.80665;
-double m = 1;
+double l = 1;		//dlugosc wahadla
+double g = 9.80665;		//przyspieszenie ziemskie
+double m = 1;		//masa kulki
 
 void main()
 {
 	double t, h, e, a0, w0, t0, tm;
 	double* X, * X1;
 	int n = 2;
-	t0 = 0;
-	tm = 10;
+	t0 = 0;		//czas poczatkowy 
+	tm = 10;		//czas koncowy
 
 	do
 	{
@@ -54,11 +54,11 @@ void main()
 	}
 	
 
-	graphics(600, 600);
+	graphics(600, 600);			//oblsuga grafiki
 	scale(-a0-w0-2, -w0-3, a0+w0+2, w0+3);
 	title("EULER - CZERWONY \t RK4 - ZIELONY","","");
 	
-	printf("\nMETODA EULERA\n");
+	printf("\nMETODA EULERA\n");		//liczenie metoda Eulera
 	X[0] = w0;
 	X[1] = a0;
 	t = t0;
@@ -77,7 +77,7 @@ void main()
 		
 	}
 	
-	printf("\n\n\n\nMETODA RK4\n");
+	printf("\n\n\n\nMETODA RK4\n");			//liczenie metoda RK4
 	X[0] = w0;
 	X[1] = a0;
 	t = t0;
@@ -115,7 +115,7 @@ void scan(double* x)		//funkcja do wczytywania i sprawdzania zgodnosci inputu
 	*x = temp;
 }
 
-void rhs_fun(double t, double* X, double* F)
+void rhs_fun(double t, double* X, double* F)		//funkcja obliczajaca prawe strony rownania
 {
 	
 	F[1] = -(g / l) * sin(X[0]);
@@ -123,7 +123,7 @@ void rhs_fun(double t, double* X, double* F)
 	
 }
 
-void veuler(double t, double* G, double h, int n, void (*fun)(double, double*, double*), double* G1)
+void veuler(double t, double* G, double h, int n, void (*fun)(double, double*, double*), double* G1)		//funkcja liczaca metoda Eulera
 {
 
 	fun(t, G, G1);
@@ -134,8 +134,8 @@ void veuler(double t, double* G, double h, int n, void (*fun)(double, double*, d
 	}
 	
 }
-double energia(double w, double a)
-{
+double energia(double w, double a)			//funkcja liczaca energie calkowita
+{	
 
 	return ((m * l * l) / 2 ) * (w * w) + m * g * l * (1 - cos(a));
 
